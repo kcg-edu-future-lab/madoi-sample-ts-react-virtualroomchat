@@ -1,11 +1,11 @@
 import './App.css';
 import { createContext, useContext } from 'react';
-import { getLastPath } from './util/Util';
 import { v4 as uuidv4 } from 'uuid';
-import { LocalJsonStorage } from './util/LocalJsonStorage';
 import { madoiKey, madoiUrl } from './keys';
-import { Madoi } from './madoi/madoi';
-import { useMadoiModel } from './madoi/reactHelpers';
+import { Madoi } from 'madoi-client';
+import { useSharedModel } from 'madoi-client-react';
+import { getLastPath } from './util/Util';
+import { LocalJsonStorage } from './util/LocalJsonStorage';
 import { VirtualRoom } from './components/virtualroom/VirtualRoom';
 import { VirtualRoomOwnModel } from './components/virtualroom/model/VirtualRoomOwnModel';
 import { VirtualRoomModel } from './components/virtualroom/model/VirtualRoomModel';
@@ -25,9 +25,9 @@ export const AppContext = createContext({
 export default function App() {
     const app = useContext(AppContext);
 
-    const vrom = useMadoiModel(app.madoi, ()=>new VirtualRoomOwnModel(
+    const vrom = useSharedModel(app.madoi, ()=>new VirtualRoomOwnModel(
         roomId, "匿名", [Math.random() * 100, Math.random() * 100]));
-    const vrm = useMadoiModel(app.madoi, ()=>new VirtualRoomModel(
+    const vrm = useSharedModel(app.madoi, ()=>new VirtualRoomModel(
         roomId, "defaultBackground.png"));
 
     return <VirtualRoom vrm={vrm} vrom={vrom} />;

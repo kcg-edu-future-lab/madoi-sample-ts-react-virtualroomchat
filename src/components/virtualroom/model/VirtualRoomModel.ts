@@ -1,11 +1,12 @@
+import { TypedCustomEventTarget } from "tcet";
 import { LocalJsonStorage } from "../../../util/LocalJsonStorage";
-import { GetState, SetState, ShareClass, TypedEventTarget } from "../../../madoi/madoi";
+import { ClassName, GetState, SetState } from "madoi-client";
 
 export interface BackgroundChangedDetail{
     background: string;
 }
-@ShareClass({className: "VirtualRoomModel"})
-export class VirtualRoomModel extends TypedEventTarget<VirtualRoomModel, {
+@ClassName("VirtualRoomModel")
+export class VirtualRoomModel extends TypedCustomEventTarget<VirtualRoomModel, {
     backgroundChanged: BackgroundChangedDetail
 }>{
     private ls: LocalJsonStorage<{background: string}>;

@@ -9,7 +9,6 @@
 以下のソフトウェアが必要です。
 
 * nodejs
-* yarn
 
 ## 起動方法
 
@@ -19,6 +18,6 @@ export const madoiKey = "YOUR_API_KEY";
 ```
 次に以下のコマンドを実行すると，アプリケーションが起動します。
 ```
-yarn install
-yarn start
+npm i
+npm run dev
 ```

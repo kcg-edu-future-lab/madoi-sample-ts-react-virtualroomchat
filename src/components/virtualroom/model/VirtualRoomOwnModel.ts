@@ -1,6 +1,8 @@
 import { LocalJsonStorage } from "../../../util/LocalJsonStorage";
-import { BeforeEnterRoom, EnterRoomAllowed, EnterRoomAllowedDetail, Madoi, PeerEntered, PeerEnteredDetail, PeerInfo, PeerLeaved, PeerLeavedDetail, PeerProfileUpdated, PeerProfileUpdatedDetail, ShareClass, TypedEventTarget } from "../../../madoi/madoi";
+import { BeforeEnterRoom, EnterRoomAllowed, EnterRoomAllowedDetail, Madoi, PeerEntered, PeerEnteredDetail, PeerInfo, PeerLeaved, PeerLeavedDetail, PeerProfileUpdated, PeerProfileUpdatedDetail } from "madoi-client";
 import { AvatarModel } from "./AvatarModel";
+import { ClassName } from "madoi-client";
+import { TypedCustomEventTarget } from "tcet";
 
 export interface SelfNameChangedDetail{
     name: string;
@@ -8,8 +10,8 @@ export interface SelfNameChangedDetail{
 export interface SelfPositionChangedDetail{
     position: number[];
 }
-@ShareClass({className: "VirtualRoomLocalModel"})
-export class VirtualRoomOwnModel extends TypedEventTarget<VirtualRoomOwnModel, {
+@ClassName("VirtualRoomLocalModel")
+export class VirtualRoomOwnModel extends TypedCustomEventTarget<VirtualRoomOwnModel, {
     selfNameChanged: SelfNameChangedDetail,
     selfPositionChanged: SelfPositionChangedDetail,
 }>{
