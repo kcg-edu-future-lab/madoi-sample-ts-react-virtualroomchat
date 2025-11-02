@@ -1,4 +1,4 @@
-# sample-skyway-react
+# madoi-sample-ts-react-virtualroomchat
 
 仮想ルームでのチャットを実装したサンプルプログラムです。React, TypeScriptと[分散共有オブジェクト管理基盤Madoi](https://ken.ieice.org/ken/paper/20210827ICFO/)を使用しています。
 
